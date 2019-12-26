@@ -1,6 +1,6 @@
 <?php
 /**
- * DokuWiki Plugin acharts (Action Component)
+ * DokuWiki Plugin achart (Action Component)
  *
  * @license GPL 2 http://www.gnu.org/licenses/gpl-2.0.html
  * @author  Sylvain Menu <35niavlys@gmail.com>
@@ -9,7 +9,7 @@
 // must be run within Dokuwiki
 if(!defined('DOKU_INC')) die();
 
-class action_plugin_acharts extends DokuWiki_Action_Plugin {
+class action_plugin_achart extends DokuWiki_Action_Plugin {
 
     /**
      * Registers a callback function for a given event

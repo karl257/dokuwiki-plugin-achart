@@ -48,7 +48,7 @@ Apex.chart = {
 }
   ],
 
-  defaultLocale: "en"
+  defaultLocale: "fr"
 };
 
 //Ending localization

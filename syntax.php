@@ -1,6 +1,6 @@
 <?php
 /**
- * DokuWiki Plugin acharts (Syntax Component)
+ * DokuWiki Plugin achart (Syntax Component)
  *
  * @license GPL 2 http://www.gnu.org/licenses/gpl-2.0.html
  * @author Sylvain Menu <35niavlys@gmail.com>
@@ -9,7 +9,7 @@
 // must be run within Dokuwiki
 if (!defined('DOKU_INC')) die();
 
-class syntax_plugin_acharts extends DokuWiki_Syntax_Plugin {
+class syntax_plugin_achart extends DokuWiki_Syntax_Plugin {
     /**
      * @return string Syntax mode type
      */
@@ -35,7 +35,7 @@ class syntax_plugin_acharts extends DokuWiki_Syntax_Plugin {
      * @param string $mode Parser mode
      */
     public function connectTo($mode) {
-        $this->Lexer->addSpecialPattern('<achart.+?</achart>',$mode,'plugin_apexcharts');
+        $this->Lexer->addSpecialPattern('<achart.+?</achart>',$mode,'plugin_achart');
     }
 
     /**
