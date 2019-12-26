@@ -1,9 +1,9 @@
 <?php
 /**
- * DokuWiki Plugin achart (Syntax Component)
+ * DokuWiki ApexCharts Plugin
  *
- * @license GPL 2 http://www.gnu.org/licenses/gpl-2.0.html
- * @author Sylvain Menu <35niavlys@gmail.com>
+ * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
+ * @author     Karl Nickel <kazozaagir@gmail.com>
  */
 
 // must be run within Dokuwiki

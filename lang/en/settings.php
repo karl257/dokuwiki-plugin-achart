@@ -1,8 +1,8 @@
 <?php
 /**
- * english language file for acharts plugin
+ * english language file for ApexCharts plugin
  *
- * @author Sylvain Menu <35niavlys@gmail.com>
+ * @author Karl Nickel <kazozaagir@gmail.com>
  */
 
 // keys need to match the config setting name

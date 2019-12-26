@@ -1,8 +1,8 @@
 <?php
 /**
- * Default settings for the acharts plugin
+ * Default settings for the ApexCharts plugin
  *
- * @author Sylvain Menu <35niavlys@gmail.com>
+ * @author Karl Nickel <kazozaagir@gmail.com>
  */
 
 $conf['url_yaml']		= 'js-yaml.min.js';

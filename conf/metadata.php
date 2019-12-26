@@ -1,8 +1,8 @@
 <?php
 /**
- * Options for the acharts plugin
+ * Options for the ApexCharts plugin
  *
- * @author Sylvain Menu <35niavlys@gmail.com>
+ * @author Karl Nickel <kazozaagir@gmail.com>
  */
 
 $meta['url_yaml'] = array('string');
