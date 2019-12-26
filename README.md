@@ -11,6 +11,16 @@ If you install this plugin manually, make sure it is installed in `lib/plugins/a
 
 Please refer to the [DokuWiki document](http://www.dokuwiki.org/plugins) for additional info on how to install plugins in DokuWiki.
 
+Here are a few screenshots of the rendered charts:
+
+![Line chart](https://i.imgur.com/bIlWmjn.png)
+
+![Bar chart](https://i.imgur.com/h3TPT0D.png)
+
+![Pie chart](https://i.imgur.com/qS26V9z.png)
+
+For more examples, check the [Exemples](https://apexcharts.com/javascript-chart-demos).
+
 ## Usage ##
 ```
 var options = {
