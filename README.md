@@ -1,57 +1,63 @@
-#Acharts Plugin for DokuWiki#
+# Acharts Plugin for DokuWiki #
 
 The `acharts` plugin for DokuWiki makes it easy to insert interactive data charts rendered by [APEXCHARTS.JS](http://www.apexcharts.com/).
 
-This plugin accepts the same JavaScript object that Acharts takes to generate a chart. Any chart describable by a static JavaScript object is supported. All types of charts natively supported by Acharts can be rendered.
+This plugin accepts the same JavaScript object that ApexCharts takes to generate a chart. Any chart describable by a static JavaScript object is supported. All types of charts natively supported by ApexCharts can be rendered.
 
 ## Installation ##
-The latest ZIP package of this plugin can be downloaded [here](https://github.com/35niavlys/dokuwiki-plugin-acharts/archive/master.zip).
+The latest ZIP package of this plugin can be downloaded [here](https://github.com/karl257/dokuwiki-plugin-acharts/archive/master.zip).
 
 If you install this plugin manually, make sure it is installed in `lib/plugins/acharts/` - if the folder is called different it may not work.
 
 Please refer to the [DokuWiki document](http://www.dokuwiki.org/plugins) for additional info on how to install plugins in DokuWiki.
 
 ## Usage ##
-This plugin accepts the same JavaScript object that the `makeChart()` function of APEXCHARTS.JS takes to render a chart. To include a chart in your DokuWiki page, simply wrap such a JavaScript object with a `<achart>` tag.
+```
+var options = {
+    chart: {
+        width: 380,
+        type: 'pie',
+        toolbar: { show: true,tools: { download: true } },
+    },
+    labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
+    series: [44, 55, 13, 43, 22],
+    responsive: [{
+        breakpoint: 480,
+        options: {
+            chart: {
+                width: 200
+            },
+            legend: {
+                position: 'bottom'
+            }
+        }
+    }]
+}
+```
+This plugin accepts the same JavaScript object that the `new ApexCharts()` function of ApexCharts takes to render a chart. To include a chart in your DokuWiki page, simply wrap such a JavaScript object with a `<achart>` tag.
 
 To render a pie chart for exemple:
 ```
 <achart>
 {
-  "type": "pie",
-  "dataProvider": [ {
-    "country": "Lithuania",
-    "litres": 501.9
-  }, {
-    "country": "Czech Republic",
-    "litres": 301.9
-  }, {
-    "country": "Ireland",
-    "litres": 201.1
-  }, {
-    "country": "Germany",
-    "litres": 165.8
-  }, {
-    "country": "Australia",
-    "litres": 139.9
-  }, {
-    "country": "Austria",
-    "litres": 128.3
-  }, {
-    "country": "UK",
-    "litres": 99
-  }, {
-    "country": "Belgium",
-    "litres": 60
-  }, {
-    "country": "The Netherlands",
-    "litres": 50
-  } ],
-  "valueField": "litres",
-  "titleField": "country",
-   "balloon":{
-   "fixedPosition":true
-  }
+    chart: {
+        width: 380,
+        type: 'pie',
+        toolbar: { show: true,tools: { download: true } },
+    },
+    labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
+    series: [44, 55, 13, 43, 22],
+    responsive: [{
+        breakpoint: 480,
+        options: {
+            chart: {
+                width: 200
+            },
+            legend: {
+                position: 'bottom'
+            }
+        }
+    }]
 }
 </achart>
 ```
@@ -79,10 +85,10 @@ For instance to make your chart occupying half width of its container and floate
 ```
 
 ## Thanks ##
-This plugin is based on [dokuwiki-plugin-c3chart](https://github.com/jasonxxu/dokuwiki-plugin-c3chart) created by @jasonxxu, thanks to him.
+This plugin is based on [dokuwiki-plugin-c3chart](https://github.com/jasonxxu/dokuwiki-plugin-c3chart) created by @jasonxxu and inspired by [dokuwiki-plugin-amchart](https://github.com/35niavlys/dokuwiki-plugin-amchart) created by @35niavlys, Special thanks to them.
 
 ## License ##
-Copyright (C) Sylvain Menu
+Copyright (C) Karl Nickel
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
