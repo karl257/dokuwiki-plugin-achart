@@ -35,7 +35,7 @@ class syntax_plugin_acharts extends DokuWiki_Syntax_Plugin {
      * @param string $mode Parser mode
      */
     public function connectTo($mode) {
-        $this->Lexer->addSpecialPattern('<achart.+?</achart>',$mode,'plugin_acharts');
+        $this->Lexer->addSpecialPattern('<achart.+?</achart>',$mode,'plugin_apexcharts');
     }
 
     /**
@@ -48,7 +48,7 @@ class syntax_plugin_acharts extends DokuWiki_Syntax_Plugin {
      * @return array Data for the renderer
      */
     public function handle($match, $state, $pos, Doku_Handler $handler){
-        $match = substr(trim($match), 8, -10);
+        $match = substr(trim($match), 7, -10);
         list($opts, $adata) = explode('>', $match, 2);
         preg_match_all('/(\S+)=["\']?((?:.(?!["\']?\s+(?:\S+)=|[>"\']))+.)["\']?/', $opts, $matches, PREG_SET_ORDER);
         $opts = array(
@@ -68,7 +68,7 @@ class syntax_plugin_acharts extends DokuWiki_Syntax_Plugin {
             }, $adata
         ); // remove comments (respecting quoted strings)
         $adata = explode("\n", $adata);
-        $adata = implode("", array_map("trim", $adata));
+        $adata = implode("", array_map('trim', $adata));
         $chartid = uniqid('__achart_');
         $adata = base64_encode($adata);
 
