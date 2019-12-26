@@ -13,7 +13,7 @@ Please refer to the [DokuWiki document](http://www.dokuwiki.org/plugins) for add
 
 Here are a few screenshots of the rendered charts:
 
-![Line chart](https://i.imgur.com/bIlWmjn.png)
+![Line Chart with Annotations](https://i.imgur.com/HvWG7Lk.png)
 
 ![Bar chart](https://i.imgur.com/h3TPT0D.png)
 
