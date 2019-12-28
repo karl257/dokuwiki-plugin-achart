@@ -6,6 +6,14 @@
     font-family: Arial;
 }
 
+/* for printing
+********************************************************************/
+@media print {
+    .apexcharts-toolbar {
+		    display:none;
+	    }
+}
+
 body {
     height: 100vh;
     background: #f9f9f9;
