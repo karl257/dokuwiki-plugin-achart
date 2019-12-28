@@ -96,7 +96,7 @@ class syntax_plugin_achart extends DokuWiki_Syntax_Plugin {
                 $c = 'media'.$v;
             }
         }
-        if($s) $s = ' style="'.$s.'"';
+        if($s) $s = ' style="'.$s.'padding: 2px;border: 1px solid #eee;margin:3px 2px;"';
         if($c) $c = ' class="'.$c.'"';
         $renderer->doc .= '<div id="'.$chartid.'"'.$c.$s.' data-achart="'.$adata.'"></div>'."\n";
     
