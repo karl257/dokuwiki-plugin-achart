@@ -4,125 +4,26 @@ jQuery(document).ready(function() {
 			var id = jQuery(div).attr('id');
 			var adata= jQuery(div).attr('data-achart');
 
-//Start localization
-
-Apex.chart = {
-  locales: [
-{
-  "name": "en",
-  "options": {
-    "months": [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December"
-    ],
-    "shortMonths": [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec"
-    ],
-    "days": [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday"
-    ],
-    "shortDays": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-    "toolbar": {
-      "exportToSVG": "Download SVG",
-      "exportToPNG": "Download PNG",
-      "exportToCSV": "Download CSV",
-      "menu": "Menu",
-      "selection": "Selection",
-      "selectionZoom": "Selection Zoom",
-      "zoomIn": "Zoom In",
-      "zoomOut": "Zoom Out",
-      "pan": "Panning",
-      "reset": "Reset Zoom"
-    }
-  }
-},
-{
-  "name": "fr",
-  "options": {
-    "months": [
-      "janvier",
-      "février",
-      "mars",
-      "avril",
-      "mai",
-      "juin",
-      "juillet",
-      "août",
-      "septembre",
-      "octobre",
-      "novembre",
-      "décembre"
-    ],
-    "shortMonths": [
-      "janv.",
-      "févr.",
-      "mars",
-      "avr.",
-      "mai",
-      "juin",
-      "juill.",
-      "août",
-      "sept.",
-      "oct.",
-      "nov.",
-      "déc."
-    ],
-    "days": [
-      "dimanche",
-      "lundi",
-      "mardi",
-      "mercredi",
-      "jeudi",
-      "vendredi",
-      "samedi"
-    ],
-    "shortDays": ["dim.", "lun.", "mar.", "mer.", "jeu.", "ven.", "sam."],
-    "toolbar": {
-      "exportToSVG": "Télécharger au format SVG",
-      "exportToPNG": "Télécharger au format PNG",
-      "exportToCSV": "Télécharger au format CSV",
-      "menu": "Menu",
-      "selection": "Sélection",
-      "selectionZoom": "Sélection et zoom",
-      "zoomIn": "Zoomer",
-      "zoomOut": "Dézoomer",
-      "pan": "Navigation",
-      "reset": "Réinitialiser le zoom"
-    }
-  }
-}
-  ],
-
-  defaultLocale: "fr"
-};
-
+/*Start localization
+ *L’utilisation d’XMLHttpRequest de façon synchrone sur le fil d’exécution principal 
+ *est obsolète à cause de son impact négatif sur la navigation de l’utilisateur final. 
+ *Consulter http://xhr.spec.whatwg.org/ pour plus d’informations.
+*/
+jQuery.ajaxSetup({
+    async: false
+});
+var jsonData= (function() {
+    var result;
+    jQuery.getJSON(DOKU_BASE+"lib/plugins/achart/assets/locales/"+ JSINFO.chartlang +".json", {}, function(data){
+      result = data;
+    });
+    return result;
+})();
+var lang = JSON.parse(JSON.stringify([jsonData]));
+Apex.chart= {
+   locales: lang,
+   defaultLocale: JSINFO.chartlang,
+ };
 //Ending localization
 
 			var options  = jsyaml.load(decodeURIComponent(escape(atob(adata))));

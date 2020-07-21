@@ -19,6 +19,7 @@ class action_plugin_achart extends DokuWiki_Action_Plugin {
      */
     public function register(Doku_Event_Handler $controller) {
        $controller->register_hook('TPL_METAHEADER_OUTPUT', 'BEFORE', $this, 'handle_tpl_metaheader_output');
+	   $controller->register_hook('DOKUWIKI_STARTED', 'AFTER',  $this, '_chartlang');   
     }
 
     /**
@@ -34,6 +35,7 @@ class action_plugin_achart extends DokuWiki_Action_Plugin {
         $event->data["script"][] = array (
             "type" => "text/javascript",
             "src" => $this->get_asset($this->getConf('url_yaml')),
+			"defer" => "defer",
             "_data" => "",
         );
 	
@@ -42,6 +44,7 @@ class action_plugin_achart extends DokuWiki_Action_Plugin {
 		$event->data["script"][] = array (
 			"type" => "text/javascript",
 			"src" => $this->get_asset($jsfile),
+			"defer" => "defer",
 			"_data" => ""
 		);
 	}
@@ -55,5 +58,14 @@ class action_plugin_achart extends DokuWiki_Action_Plugin {
         }
         return $resource;
     }
+	
+	function _chartlang(&$event, $param) {
+		global $JSINFO;global $INFO;global $conf;	
+		$localization= $conf['lang'];
+		
+		$filename=DOKU_PLUGIN . "achart/assets/locales/".$localization.".json";
+		if( file_exists( $filename ) == true ){$mylocale = $conf['lang'];} else {$mylocale = "en";}
+		$JSINFO['chartlang']  = $mylocale;
+	}
 
 }
