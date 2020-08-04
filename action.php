@@ -18,7 +18,8 @@ class action_plugin_achart extends DokuWiki_Action_Plugin {
      * @return void
      */
     public function register(Doku_Event_Handler $controller) {
-       $controller->register_hook('TPL_METAHEADER_OUTPUT', 'BEFORE', $this, 'handle_tpl_metaheader_output');
+
+	   $controller->register_hook('DOKUWIKI_STARTED', 'AFTER',  $this, '_chartlang');   
     }
 
     /**
@@ -29,31 +30,14 @@ class action_plugin_achart extends DokuWiki_Action_Plugin {
      *                           handler was registered]
      * @return void
      */
-    public function handle_tpl_metaheader_output(Doku_Event &$event, $param) {
+	
+	function _chartlang(&$event, $param) {
+		global $JSINFO;global $conf;	
 		
-        $event->data["script"][] = array (
-            "type" => "text/javascript",
-            "src" => $this->get_asset($this->getConf('url_yaml')),
-            "_data" => "",
-        );
-	
-	$jsfiles = preg_split("/\|/", $this->getConf('acharts_js'));
-	foreach($jsfiles as $jsfile) {
-		$event->data["script"][] = array (
-			"type" => "text/javascript",
-			"src" => $this->get_asset($jsfile),
-			"_data" => ""
-		);
+		$filename= dirname(__FILE__) . '/assets/locales/'.$conf['lang'].'.json';
+		if( file_exists( $filename ) == true ){$localization = $conf['lang'];} else {$localization = "en";}
+		$JSINFO['chartlang']  = $localization;
+		$JSINFO['chartlocale']= file_get_contents(dirname(__FILE__) . '/assets/locales/'.$localization.'.json');
 	}
-	
-    }
-
-    private function get_asset($resource) {
-        if(!preg_match('#^(?:(?:https?:)?/)?/#', $resource)) {
-            $info = $this->getInfo();
-            $resource = DOKU_BASE."lib/plugins/".$info['base']."/assets/".$resource;
-        }
-        return $resource;
-    }
 
 }

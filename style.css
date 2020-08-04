@@ -1,5 +1,4 @@
 /* apexcharts.css file from apexcharts*/
-
 .apexcharts-canvas {
   position: relative;
   user-select: none;
@@ -20,9 +19,6 @@
   -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
 }
 
-.apexcharts-canvas.apexcharts-theme-dark {
-  background: #343F57;
-}
 
 .apexcharts-inner {
   position: relative;
@@ -403,11 +399,11 @@
   rx: 2;
 }
 
-.apexcharts-canvas.apexcharts-zoomable .hovering-zoom {
+.apexcharts-svg.apexcharts-zoomable.hovering-zoom {
   cursor: crosshair
 }
 
-.apexcharts-canvas.apexcharts-zoomable .hovering-pan {
+.apexcharts-svg.apexcharts-zoomable.hovering-pan {
   cursor: move
 }
 
