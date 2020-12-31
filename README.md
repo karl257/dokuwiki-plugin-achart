@@ -26,6 +26,46 @@ Here are a few screenshots of the rendered charts:
 For more examples, check the [Exemples](https://apexcharts.com/javascript-chart-demos).
 
 ## Usage
+
+### Data from a local file
+
+```
+<achart url=:wiki:convertcsv.csv height=320px align=center>
+{
+  chart: {
+      height: 350,
+      type: 'bar',
+  },
+  dataLabels: {
+      enabled: false
+  },
+  title: {
+      text: "Ajax Example",
+  }
+}
+</achart>
+```
+
+### Data from a remote file
+```
+<achart url=https://gist.github.com/karl257/6e799cc0d8a5e47ac11d97672a6890dc/raw/0a80ea7ff3b89d0f376aec0eff0d817550b32334/convertcsv.csv height=320px align=center>
+{
+  chart: {
+      height: 350,
+      type: 'bar',
+  },
+  dataLabels: {
+      enabled: false
+  },
+  title: {
+      text: "From web",
+  }
+}
+</achart>
+```
+
+### Add data directly
+
 ```
 var options = {
     chart: {
