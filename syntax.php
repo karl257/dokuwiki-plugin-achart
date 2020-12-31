@@ -158,7 +158,6 @@ class syntax_plugin_achart extends DokuWiki_Syntax_Plugin {
 		//Remove escaping slashes
 		$newJson = str_replace('\\','',$newJson);
 	}
-
 		#print_r ($newJson);
 		if(!empty($file)) {$chartData = $newJson;} else {$chartData = $adata;};
         if($align) $resize = ' style="'.$resize.'padding: 2px;border: 1px solid #eee;margin:3px 2px;"';
