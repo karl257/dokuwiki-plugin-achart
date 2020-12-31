@@ -98,7 +98,7 @@ For instance to make your chart occupying half width of its container and floate
 </achart>
 ```
 
-## Thanks ##
+## Thanks##
 This plugin is based on [dokuwiki-plugin-c3chart](https://github.com/jasonxxu/dokuwiki-plugin-c3chart) created by @jasonxxu and inspired by [dokuwiki-plugin-amchart](https://github.com/35niavlys/dokuwiki-plugin-amchart) created by @35niavlys, Special thanks to them.
 
 ## More exemples ##
@@ -106,9 +106,9 @@ Visit [apexcharts.com](https://apexcharts.com/javascript-chart-demos/)
 
 ## Todo##
 
-!Support Pdf and ODT export
+Support Pdf and ODT export
 
-## License ##
+## License##
 Copyright (C) Karl Nickel
 
 This program is free software; you can redistribute it and/or modify
