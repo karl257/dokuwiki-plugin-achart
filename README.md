@@ -1,4 +1,4 @@
-# Acharts Plugin for DokuWiki#
+# Acharts Plugin for DokuWiki
 
 The `acharts` plugin for DokuWiki makes it easy to insert interactive data charts rendered by [APEXCHARTS.JS](http://www.apexcharts.com/).
 
@@ -8,7 +8,7 @@ This plugin accepts the same JavaScript object that ApexCharts takes to generate
 
 [ApexCharts v3.23.1](https://github.com/apexcharts/apexcharts.js)
 
-## Installation##
+## Installation
 The latest ZIP package of this plugin can be downloaded [here](https://github.com/karl257/dokuwiki-plugin-acharts/archive/master.zip).
 
 If you install this plugin manually, make sure it is installed in `lib/plugins/acharts/` - if the folder is called different it may not work.
@@ -25,7 +25,7 @@ Here are a few screenshots of the rendered charts:
 
 For more examples, check the [Exemples](https://apexcharts.com/javascript-chart-demos).
 
-## Usage##
+## Usage
 ```
 var options = {
     chart: {
@@ -80,7 +80,7 @@ Also note that you can include comments in the snippet, both styles (`//` and `/
 
 The major restriction is that the JavaScript object must be **static**, i.e. it cannot include function calls or function expressions, for security reasons.
 
-## Options##
+## Options
 The `<achart>` tag can carry optional attributes to customize the appearance of the chart. The attributes are separated by spaces, each specified in the format of `name=value`. Valid attributes are:
 
 | Name     | Description |
@@ -98,17 +98,17 @@ For instance to make your chart occupying half width of its container and floate
 </achart>
 ```
 
-## Thanks##
+## Thanks
 This plugin is based on [dokuwiki-plugin-c3chart](https://github.com/jasonxxu/dokuwiki-plugin-c3chart) created by @jasonxxu and inspired by [dokuwiki-plugin-amchart](https://github.com/35niavlys/dokuwiki-plugin-amchart) created by @35niavlys, Special thanks to them.
 
 ## More exemples ##
 Visit [apexcharts.com](https://apexcharts.com/javascript-chart-demos/)
 
-## Todo##
+## Todo
 
 Support Pdf and ODT export
 
-## License##
+## License
 Copyright (C) Karl Nickel
 
 This program is free software; you can redistribute it and/or modify
