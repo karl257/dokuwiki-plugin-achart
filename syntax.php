@@ -88,78 +88,82 @@ class syntax_plugin_achart extends DokuWiki_Syntax_Plugin {
         if($mode != 'xhtml') return false;
 
         list($chartid, $adata, $opts) = $data;
-        $s = '';
-        $c = '';
-		$u = '';
+        $resize = '';
+        $align = '';
+		$file = '';
         foreach($opts as $n => $v) {
             if(in_array($n, array('width','height')) && $v) {
-                $s .= $n.':'.hsc($v).';';
+                $resize .= $n.':'.hsc($v).';';
             } elseif($n=='align' && in_array($v, array('left','right','center'))) {
-                $c = 'media'.$v;
+                $align = 'media'.$v;
             } elseif ($n=='url' && $v) {
-				$u = $v;
+				$file = $v;
 			}
         }
 		
-		if (!empty($u)) {
-			// Load internal files data
-			if($u !== '' && !preg_match('/^https?:\/\//i', $u)) {
-				$u = str_replace(array(':'),'/',cleanID($u));
+		if (!empty($file)) {
+			// Check for csv files
+			if($file !== '' && !preg_match('/^https?:\/\//i', $file)) {
+				$file = str_replace(array(':'),'/',cleanID($file));
 			}
-			// Load external files data
-			if(preg_match('/^https?:\/\//i', $u)) {
+			// Load csv files
+			if(preg_match('/^https?:\/\//i', $file)) {
 				$http = new DokuHTTPClient();
-				$content = $http->get($u);
-				if($content === false) print('Failed to fetch remote CSV data');
-
-			} else {
-				$u = mediaFN($u);
-				if(auth_quickaclcheck(getNS($u) . ':*') < AUTH_READ) {
-					print('Access denied to CSV data');
+				$content = $http->get($file);
+				try {
+					if($content === false) 
+						throw new \Exception('Chart cannot be displayed ! Failed to fetch remote CSV data');
+				} catch (\Exception $e) {
+					msg(hsc($e->getMessage()), -1);
+					return false;
 				}
-				if(!file_exists($u)) {
-					print('Requested local CSV file does not exist');
-				}			
+			} else {
+				$file = mediaFN($file);
+				try {
+					if(auth_quickaclcheck(getNS($file) . ':*') < AUTH_READ) 
+						throw new \Exception('Chart cannot be displayed ! Access denied to CSV data');
+					if(!file_exists($file))
+						throw new \Exception('Chart cannot be displayed ! Requested local CSV file does not exist');
+				} catch (\Exception $e) {
+					msg(hsc($e->getMessage()), -1);
+					return false;
+				}
 			}
 			// If not valid UTF-8 is given we assume ISO-8859-1
-			if(!utf8_check($u)) $u = utf8_encode($u);
+			if(!utf8_check($file)) $file = utf8_encode($file);
 		/*
 		 * Converts CSV to JSON
-		 * Example uses the csv file of this gist
 		 */
 		//Read the csv and return as array
 		error_reporting(0);
-		$data = array_map('str_getcsv', file($u));
+		$data = array_map('str_getcsv', file($file));
 		//Get the first raw as the key
 		$keys = array_shift($data);  
 		//Add label to each value
 		$newArray = array_map(function($values) use ($keys){
 			return array_combine($keys, $values);
 		}, $data);
-		
+
 		// Print it out as JSON
 		$csvData[]= array_combine(array('data'),array($newArray));
 		//Remove on given data in syntax{.....}
-		$newadata=substr($adata, 1, strlen($adata) - 2);
-		$jsondata = array('series'=> $csvData,'config'=>$newadata);
-		//unset($jsondata['config']);
-		
-		$newjson=json_encode($jsondata,JSON_NUMERIC_CHECK);
-		
-		$newjson = preg_replace(array('/("series")/i') , "series",$newjson);
-		$newjson = preg_replace(array('/("data")/i') , "data",$newjson);
-		$newjson = preg_replace(array('/("config":")/i') , "",$newjson);
-		$newjson = preg_replace(array('/(}")/i') , "}",$newjson);
+		$newAdata=substr($adata, 1, strlen($adata) - 2);
+		$jsonData = array('series'=> $csvData,'config'=>$newAdata);
+		#unset($jsondata['config']);	
+		$newJson=json_encode($jsonData,JSON_NUMERIC_CHECK);		
+		$newJson = preg_replace(array('/("series")/i') , "series",$newJson);
+		$newJson = preg_replace(array('/("data")/i') , "data",$newJson);
+		$newJson = preg_replace(array('/("config":")/i') , "",$newJson);
+		$newJson = preg_replace(array('/(}")/i') , "}",$newJson);
 		//Remove escaping slashes
-		$newjson = str_replace('\\','',$newjson);
+		$newJson = str_replace('\\','',$newJson);
 	}
-		
-		//print_r ($newjson);
-		if(!empty($u)) {$chartdata = $newjson;} else {$chartdata = $adata;};
-        if($s) $s = ' style="'.$s.'padding: 2px;border: 1px solid #eee;margin:3px 2px;"';
-        if($c) $c = ' class="'.$c.'"';
+		#print_r ($newJson);
+		if(!empty($file)) {$chartData = $newJson;} else {$chartData = $adata;};
+        if($align) $resize = ' style="'.$resize.'padding: 2px;border: 1px solid #eee;margin:3px 2px;"';
+        if($ClassAttr) $ClassAttr = ' class="'.$ClassAttr.'"';
 
-        $renderer->doc .= '<div id="'.$chartid.'"'.$c.$s.' data-achart="'.base64_encode($chartdata).'"></div>'."\n";
+        $renderer->doc .= '<div id="'.$chartid.'"'.$ClassAttr.$resize.' data-achart="'.base64_encode($chartData).'"></div>'."\n";
     
         return true;
     }
