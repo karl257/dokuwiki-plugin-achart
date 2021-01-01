@@ -104,7 +104,10 @@ class syntax_plugin_achart extends DokuWiki_Syntax_Plugin {
 		if (!empty($file)) {
 			// Check for csv files
 			if($file !== '' && !preg_match('/^https?:\/\//i', $file)) {
-				$file = str_replace(array(':'),'/',cleanID($file));
+				$file = cleanID($file);
+				if(!strlen(getNS($file))) {
+					$file = $INFO['namespace'] . ':' . $file;
+				}
 			}
 			// Load csv files
 			if(preg_match('/^https?:\/\//i', $file)) {
@@ -158,6 +161,7 @@ class syntax_plugin_achart extends DokuWiki_Syntax_Plugin {
 		//Remove escaping slashes
 		$newJson = str_replace('\\','',$newJson);
 	}
+
 		#print_r ($newJson);
 		if(!empty($file)) {$chartData = $newJson;} else {$chartData = $adata;};
         if($align) $resize = ' style="'.$resize.'padding: 2px;border: 1px solid #eee;margin:3px 2px;"';
