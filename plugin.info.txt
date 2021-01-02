@@ -1,7 +1,7 @@
 base   achart
 author Karl nickel
 email  kazozaagir@gmail.com
-date   2020-12-31
+date   2020-01-02
 name   ApexCharts Plugin
 desc   Inserts interactive data charts rendered by Apexcharts
 url    https://www.dokuwiki.org/plugin:achart
