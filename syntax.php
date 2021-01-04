@@ -115,16 +115,17 @@ class syntax_plugin_achart extends DokuWiki_Syntax_Plugin {
 				$content = $http->get($file);
 				try {
 					if($content === false) 
-						throw new \Exception('Chart cannot be displayed ! Failed to fetch remote CSV data');
+						throw new \Exception('Chart cannot be displayed ! Failed to fetch remote CSV file');
 				} catch (\Exception $e) {
 					msg(hsc($e->getMessage()), -1);
 					return false;
 				}
 			} else {
+				$fileNS = getNS($file);
 				$file = mediaFN($file);
 				try {
-					if(auth_quickaclcheck(getNS($file) . ':*') < AUTH_READ) 
-						throw new \Exception('Chart cannot be displayed ! Access denied to CSV data');
+					if(auth_quickaclcheck($fileNS . ':*') < AUTH_READ) 
+						throw new \Exception('Chart cannot be displayed ! Access denied to CSV file');
 					if(!file_exists($file))
 						throw new \Exception('Chart cannot be displayed ! Requested local CSV file does not exist');
 				} catch (\Exception $e) {
