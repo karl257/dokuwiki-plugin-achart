@@ -40,9 +40,9 @@
     ],
     "shortDays": ["Ku w'7.", "Ku wa 1.", "Ku wa 2.", "Ku wa 3.", "Ku wa 4.", "Ku wa 5.", "Ku wa 6."],
     "toolbar": {
-      "exportToSVG": "Pakurura muri SVG",
-      "exportToPNG": "Pakurura muri PNG",
-      "exportToCSV": "Pakurura muri CSV",
+      "exportToSVG": "Kuvoma muri SVG",
+      "exportToPNG": "Kuvoma muri PNG",
+      "exportToCSV": "Kuvoma muri CSV",
       "menu": "Ibirimwo",
       "selection": "Guhitamwo",
       "selectionZoom": "Guhitamwo no kwagura",
