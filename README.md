@@ -11,7 +11,7 @@ This plugin accepts the same JavaScript object that ApexCharts takes to generate
 ## Installation
 The latest ZIP package of this plugin can be downloaded [here](https://github.com/karl257/dokuwiki-plugin-acharts/archive/master.zip).
 
-If you install this plugin manually, make sure it is installed in `lib/plugins/acharts/` - if the folder is called different it may not work.
+If you install this plugin manually, make sure it is installed in `lib/plugins/achart/` - if the folder is called different it may not work.
 
 Please refer to the [DokuWiki document](http://www.dokuwiki.org/plugins) for additional info on how to install plugins in DokuWiki.
 
