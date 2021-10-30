@@ -4,9 +4,9 @@ The `acharts` plugin for DokuWiki makes it easy to insert interactive data chart
 
 This plugin accepts the same JavaScript object that ApexCharts takes to generate a chart. Any chart describable by a static JavaScript object is supported. All types of charts natively supported by ApexCharts can be rendered.
 
-[js-yaml v3.14.1](https://github.com/nodeca/js-yaml)
+[js-yaml v4.1.0](https://github.com/nodeca/js-yaml)
 
-[ApexCharts v3.23.1](https://github.com/apexcharts/apexcharts.js)
+[ApexCharts v3.28.2](https://github.com/apexcharts/apexcharts.js)
 
 ## Installation
 The latest ZIP package of this plugin can be downloaded [here](https://github.com/karl257/dokuwiki-plugin-acharts/archive/master.zip).
