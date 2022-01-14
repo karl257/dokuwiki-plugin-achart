@@ -23,7 +23,7 @@ Here are a few screenshots of the rendered charts:
 
 ![Pie chart](https://i.imgur.com/qS26V9z.png)
 
-For more examples, check the [Exemples](https://apexcharts.com/javascript-chart-demos).
+For more examples, check the [Examples](https://apexcharts.com/javascript-chart-demos).
 
 ## Usage
 
@@ -90,7 +90,7 @@ var options = {
 ```
 This plugin accepts the same JavaScript object that the `new ApexCharts()` function of ApexCharts takes to render a chart. To include a chart in your DokuWiki page, simply wrap such a JavaScript object with a `<achart>` tag.
 
-To render a pie chart for exemple:
+To render a pie chart for example:
 ```
 <achart>
 {
@@ -141,7 +141,7 @@ For instance to make your chart occupying half width of its container and floate
 ## Thanks
 This plugin is based on [dokuwiki-plugin-c3chart](https://github.com/jasonxxu/dokuwiki-plugin-c3chart) created by @jasonxxu and inspired by [dokuwiki-plugin-amchart](https://github.com/35niavlys/dokuwiki-plugin-amchart) created by @35niavlys, Special thanks to them.
 
-## More exemples ##
+## More examples ##
 Visit [apexcharts.com](https://apexcharts.com/javascript-chart-demos/)
 
 ## Todo
