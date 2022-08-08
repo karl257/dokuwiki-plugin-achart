@@ -425,6 +425,10 @@
   rx: 2;
 }
 
+.apexcharts-svg {
+  height: auto;
+}
+
 .apexcharts-svg.apexcharts-zoomable.hovering-zoom {
   cursor: crosshair
 }
